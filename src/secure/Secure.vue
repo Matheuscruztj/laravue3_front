@@ -12,8 +12,8 @@
 
 <script>
 import {onMounted, ref} from 'vue';
-import Menu from "@/components/Menu.vue";
-import Nav from "@/components/Nav.vue";
+import Menu from "@/secure/components/Menu.vue";
+import Nav from "@/secure/components/Nav.vue";
 import axios from 'axios';
 import router from '@/router';
 
@@ -34,8 +34,6 @@ export default {
         const response = await axios.get('user');
 
         user.value = response.data.data;
-
-        console.log(response);
       } catch(e) {
         await router.push('/login');
       }

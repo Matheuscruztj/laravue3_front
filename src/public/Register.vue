@@ -1,25 +1,25 @@
 <template>
     <main class="w-100">
-        <form class="form-signin" @submit.prevent="submit">
-            <h1 class="h3 mb-3 fw-normal">Please register</h1>
+      <form class="form-signin" @submit.prevent="submit">
+        <h1 class="h3 mb-3 fw-normal">Please register</h1>
 
-            <label for="first_name" class="sr-only">First Name</label>
-            <input type="text" class="form-control" id="first_name" placeholder="First Name" required v-model="firstName">
+        <label for="first_name" class="sr-only">First Name</label>
+        <input type="text" class="form-control" id="first_name" placeholder="First Name" required v-model="firstName">
 
-            <label for="last_name">Last Name</label>
-            <input type="text" class="form-control" id="last_name" placeholder="Last Name" required v-model="lastName">
+        <label for="last_name">Last Name</label>
+        <input type="text" class="form-control" id="last_name" placeholder="Last Name" required v-model="lastName">
 
-            <label for="inputEmail">Email address</label>
-            <input type="email" class="form-control" id="inputEmail" placeholder="Email address" required v-model="email">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email address" required v-model="email">
 
-            <label for="inputPassword">Password</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required v-model="password">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required v-model="password">
 
-            <label for="passwordConfirm">Password Confirm</label>
-            <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" required v-model="passwordConfirm">
+        <label for="passwordConfirm">Password Confirm</label>
+        <input type="password" class="form-control" id="passwordConfirm" placeholder="Password" required v-model="passwordConfirm">
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-        </form>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      </form>
     </main>
 </template>
 
@@ -101,10 +101,10 @@ body {
   border-top-right-radius: 0;
 }
 .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 </style>
