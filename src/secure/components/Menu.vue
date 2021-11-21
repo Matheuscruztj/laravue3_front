@@ -5,16 +5,16 @@
             <li class="nav-item">
               <router-link to="/" active-class="active" class="nav-link">Dashboard</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="user.canView('users')">
               <router-link to="/users" active-class="active" class="nav-link">Users</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  v-if="user.canView('roles')">
               <router-link to="/roles" active-class="active" class="nav-link">Roles</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  v-if="user.canView('products')">
               <router-link to="/products" active-class="active" class="nav-link">Products</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item"  v-if="user.canView('orders')">
               <router-link to="/orders" active-class="active" class="nav-link">Orders</router-link>
             </li>
           </ul>
@@ -23,8 +23,19 @@
 </template>
 
 <script>
+import { computed } from '@vue/reactivity';
+import { useStore } from 'vuex';
+
 export default {
-  name: "Menu"
+  name: "Menu",
+  setup() {
+    const store = useStore();
+    const user = computed(() => store.state.User.user);
+
+    return {
+      user
+    }
+  }
 }
 </script>
 

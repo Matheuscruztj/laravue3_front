@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-toolbar mb-2 mb-md-0" v-if="authenticatedUser.canEdit('products')">
             <router-link to="/products/create" class="btn btn-sm btn-outline-secondary">Add</router-link>            
         </div>
     </div>
@@ -25,7 +25,7 @@
                     <td>{{ product.description }}</td>
                     <td>{{ product.price }}</td>
                     <td>
-                        <div class="btn-group mr-2">
+                        <div class="btn-group mr-2" v-if="authenticatedUser.canEdit('products')">
                             <router-link :to="`/products/${product.id}/edit`" class="btn btn-sm btn-outline-secondary">Edit</router-link>
                             <a href="javascript:void(0)" class="btn btn-sm btn-outline-secondary" @click="del(product.id)">Delete</a>
                         </div>
@@ -39,10 +39,11 @@
 </template>
 
 <script lang="ts">
-import {ref, onMounted} from 'vue';
+import {ref, onMounted, computed} from 'vue';
 import axios from 'axios';
 import { Entity } from '@/interfaces/entity';
 import Paginator from '@/secure/components/Paginator.vue';
+import { useStore } from 'vuex';
 
 export default {
     name: "Products",
@@ -52,6 +53,9 @@ export default {
     setup() {
         const products = ref([]);
         const lastPage = ref(0);
+        const store = useStore();
+
+        const authenticatedUser = computed(() => store.state.User.user);
 
         const del = async (id: number) => {
             if(confirm("Are you sure you want to delete this record?")) {
@@ -71,6 +75,7 @@ export default {
         onMounted(load);
 
         return {
+            authenticatedUser,
             products,
             del,
             lastPage,
